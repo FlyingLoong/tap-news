@@ -1,7 +1,7 @@
 from cloudAMQP_client import CloudAMQPClient
 
 CLOUDAMPQ_URL = "amqp://wklvgkmz:BPp9vVZy6AG6X1FEL2yDTDfE4UogGsgV@sidewinder.rmq.cloudamqp.com/wklvgkmz"
-TEST_QUEUE_NAME = "test"
+TEST_QUEUE_NAME = "tap-news"
 
 def test_basic():
     client = CloudAMQPClient(CLOUDAMPQ_URL, TEST_QUEUE_NAME)
@@ -9,7 +9,7 @@ def test_basic():
     sentMsg = {"test": "demo"}
 
     client.sendMessage(sentMsg)
-    client.sleep(10)
+    client.sleeps(10)
     receivedMsg = client.getMessage()
 
     assert sentMsg == receivedMsg

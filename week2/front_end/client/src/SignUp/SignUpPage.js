@@ -61,6 +61,16 @@ class SignUpPage extends React.Component {
         this.setState({
             user
         });
+
+        if (this.state.user.password !== this.state.user.confirm_password) {
+            const errors = this.state.errors;
+            errors.password = "Password and Confirm Password don't match!";
+            this.setState({erros});
+        } else {
+            const errors = this.state.errors;
+            errors.password = "";
+            this.setState({errors});
+        }
     }
 
     render() {}

@@ -1,0 +1,4 @@
+{
+    "MongoDbUri": "",
+    "jwtSecret": "a secret phrase!"
+}

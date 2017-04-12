@@ -30,12 +30,12 @@ class LoginPage extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: this.state.user.email,
-                password: this.state.user.password
+                email: email,
+                password: password
             })
         })
         .then (response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 this.setState({errors: {}});
 
                 response.json().then(function(json) {

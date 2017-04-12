@@ -14,7 +14,7 @@ const SignUpForm = ({
                 {errors.summary && <div className='row'><p className='error-message'>{errors.summary}</p></div>}
                 <div className='row'>
                     <div className='input-field col s12'>
-                        <input id='email' type='emial' name='email' className='validate' onChange={onChange}/>
+                        <input id='email' type='email' name='email' className='validate' onChange={onChange}/>
                         <label htmlFor='email'>Email</label>
                     </div>
                 </div>
@@ -26,6 +26,12 @@ const SignUpForm = ({
                     </div>
                 </div>
                 {errors.password && <div className='row'><p className='error-message'>{errors.password}</p></div>}
+                <div className='row'>
+                    <div className='input-field col s12'>
+                        <input id='confirm_password' type='password' name='confirm_password' className='validate' onChange={onChange}/>
+                        <label htmlFor='confirm_password'>Confirm Password</label>
+                    </div>
+                </div>
                 <div className='row right-align'>
                     <input type='submit' className='waves-effect waves-light btn indigo lighten-1' value='Sign Up' />
                 </div>

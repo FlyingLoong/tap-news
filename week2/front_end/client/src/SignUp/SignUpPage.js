@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import './SignUpForm/SignUpForm';
+import SignUpForm from './SignUpForm';
 
 class SignUpPage extends React.Component {
 
@@ -38,7 +38,7 @@ class SignUpPage extends React.Component {
             })
         })
         .then(response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 console.log("Successfully signed up!");
                 this.setState({errors: {}})
 
@@ -65,7 +65,7 @@ class SignUpPage extends React.Component {
         if (this.state.user.password !== this.state.user.confirm_password) {
             const errors = this.state.errors;
             errors.password = "Password and Confirm Password don't match!";
-            this.setState({erros});
+            this.setState({errors});
         } else {
             const errors = this.state.errors;
             errors.password = "";
@@ -73,6 +73,20 @@ class SignUpPage extends React.Component {
         }
     }
 
-    render() {}
+    render() {
+        return (
+            <SignUpForm
+            onSubmit={this.processForm}
+            onChange={this.changeUser}
+            errors={this.state.errors}
+            user={this.state.user}/>
+        )
+    }
 
 }
+
+SignUpPage.contextTypes = {
+    router: PropTypes.object.isRequired
+}
+
+export default SignUpPage;

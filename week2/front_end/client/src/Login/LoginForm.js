@@ -15,18 +15,18 @@ const LoginForm = ({
                     {errors.summary && <div className='row'><p className='error-message'>{errors.summary}</p></div>}
                     <div className='row'>
                         <div className='input-field col s12'>
-                            <input className='validate' id='email' name='email' onChange={onChange}/>
+                            <input className='validate' id='email' type='email' name='email' onChange={onChange}/>
                             <label htmlFor='email'>Email</label>
                         </div>
                     </div>
                     {errors.email && <div className='row'><p className='error-message'>{errors.email}</p></div>}
                     <div className='row'>
                         <div className='input-field col s12'>
-                            <input className='valicate' id='password' type='password' name='password' onChange={onChange}/>
+                            <input className='validate' id='password' type='password' name='password' onChange={onChange}/>
                             <label htmlFor='password'>Password</label>
                         </div>
                     </div>
-                    {error.password && <div className='row'><p className='error-message'>{errors.password}</p></div>}
+                    {errors.password && <div className='row'><p className='error-message'>{errors.password}</p></div>}
                     <div className='row right-align'>
                         <input type='submit' className='wave-effect wave-light btn indigo lighten-1' value='Log in'/>
                     </div>

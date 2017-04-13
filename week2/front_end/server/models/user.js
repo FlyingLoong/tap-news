@@ -9,7 +9,7 @@ const UserSchema =new mongoose.Schema ({
     password: String
 });
 
-UserSchema.method.comparePassword = function comparePassword(password callback) {
+UserSchema.method.comparePassword = function comparePassword(password, callback) {
     bcrypt.compare(password, this.password, callback);
 }
 
@@ -30,3 +30,5 @@ UserSchema.pre('save', function saveHook(next) {
         })
     });
 })
+
+module.exports = mongoose.model('User', UserSchema);

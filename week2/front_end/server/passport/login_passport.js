@@ -13,6 +13,7 @@ module.exports = new PassportLocalStrategy({
             password: password.trim()
         };
 
+        // Find a user by email.
         return User.findOne({email: userData.email}, (err, user) => {
             if (err) {return done(err)}
 
@@ -22,6 +23,8 @@ module.exports = new PassportLocalStrategy({
 
                 return done(error);
             }
+
+            //console.log(user);
 
             return user.comparePassword(userData.password, (passwordErr, isMatch) => {
                 if (err) {return done(err)}
@@ -34,7 +37,7 @@ module.exports = new PassportLocalStrategy({
                 }
 
                 const payload = {
-                    sub: user_id
+                    sub: user._id
                 };
 
                 const token = jwt.sign(payload, config.jwtSecret);

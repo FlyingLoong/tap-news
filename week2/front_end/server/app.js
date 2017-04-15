@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser');
 var cors = require('cors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +10,9 @@ var auth = require('./routes/auth');
 
 var app = express();
 
+var config = require('./config/config');
+require('./models/main').connect(config.MongoDbUri);
+
 // view engine setup
 app.set('views', path.join(__dirname, '../client/build'));
 app.set('view engine', 'jade');
@@ -16,8 +20,7 @@ app.use('/static', express.static(path.join(__dirname, '../client/build/static/'
 
 //TODO: Remove this after deployment is done
 app.use(cors());
-var config = require('./config/config');
-require('./models/main').connect(config.mongoDbUri);
+app.use(bodyParser.json());
 
 app.use(passport.initialize());
 var localLoginStrategy = require('./passport/login_passport');
@@ -26,7 +29,7 @@ passport.use('local-login', localLoginStrategy);
 passport.use('local-signup', localSignUpStrategy);
 
 const authCheckerMiddleWare = require('./middleware/auth_checker');
-app.use('./news', authCheckerMiddleWare);
+app.use('/news', authCheckerMiddleWare);
 
 app.use('/', index);
 app.use('/news', news);

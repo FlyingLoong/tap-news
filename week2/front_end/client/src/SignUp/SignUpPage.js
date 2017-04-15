@@ -20,10 +20,13 @@ class SignUpPage extends React.Component {
     }
 
     processForm(event) {
+        console.log("processForm is called!")
         event.preventDefault();
 
-        if (this.state.user.pass !== this.state.user.confirm_password)
+        if (this.state.user.password !== this.state.user.confirm_password) {
+            console.log("Password and ConfirmPassword are not match! Return");
             return;
+        }
 
         fetch('http://localhost:3000/auth/signup', {
             method: 'POST',
@@ -45,6 +48,7 @@ class SignUpPage extends React.Component {
                 this.context.router.replace('/login');
             } else {
                 response.json().then(function(json){
+                    console.log(json);
                     const errors = json.errors ? json.errors : {}
                     errors.summary = json.errors.message;
                     this.setState({errors});

@@ -1,7 +1,7 @@
 from cloudAMQP_client import CloudAMQPClient
 
 CLOUDAMPQ_URL = "amqp://wklvgkmz:BPp9vVZy6AG6X1FEL2yDTDfE4UogGsgV@sidewinder.rmq.cloudamqp.com/wklvgkmz"
-TEST_QUEUE_NAME = "tap-news"
+TEST_QUEUE_NAME = "test-news-scraper-news-task-queue"
 
 def test_basic():
     client = CloudAMQPClient(CLOUDAMPQ_URL, TEST_QUEUE_NAME)

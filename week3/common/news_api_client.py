@@ -20,7 +20,7 @@ def getNewsFromSource(sources=DEFAULT_SOURCES, sortBy=SORT_BY_TOP):
     for source in sources:
         payload = {
             "source": source,
-            "api": ARTICLE_API,
+            "apiKey": NEWS_API_KEY,
             "sortBy": sortBy
         }
         response = requests.get(buildUrl(), params=payload)

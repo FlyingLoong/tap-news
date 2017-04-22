@@ -7,7 +7,7 @@ doc4 = "Never compare an apple to an orange"
 
 documents = [doc1, doc2, doc3, doc4]
 
-tfidf = TfidfVectorizer.fit_transform(documents)
+tfidf = TfidfVectorizer().fit_transform(documents)
 pairwise_sim = tfidf * tfidf.T
 
 print pairwise_sim.A

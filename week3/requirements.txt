@@ -1,7 +1,7 @@
-dateutil
 lxml
 newspaper
 python-jsonrpc
+python-dateutil
 pymongo
 pika
 redis

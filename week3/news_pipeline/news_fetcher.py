@@ -31,7 +31,7 @@ def handle_message(message):
     article.download()
     article.parse()
 
-    task['text'] = text
+    task['text'] = article.text
     dedupe_news_queue_client.sendMessage(task)
 
 while True:
